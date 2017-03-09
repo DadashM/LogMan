@@ -1,9 +1,6 @@
-import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
-
-import javax.swing.JFrame;
 
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
@@ -11,6 +8,8 @@ import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
 public class MyKeyListener implements NativeKeyListener {
+	
+	static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(MyKeyListener.class);
 	
 	int keyCode;
 	
@@ -23,9 +22,7 @@ public class MyKeyListener implements NativeKeyListener {
             GlobalScreen.registerNativeHook();
         }
         catch (NativeHookException ex) {
-            System.err.println("There was a problem registering the native hook.");
-            System.err.println(ex.getMessage());
-
+            log.error("There was a problem registering the native hook : " + ex.getMessage());
             System.exit(1);
         }
 
@@ -47,6 +44,7 @@ public class MyKeyListener implements NativeKeyListener {
 				} else if (arg0.getKeyCode() == NativeKeyEvent.VC_D) {
 					keyCode += arg0.getKeyCode();
 					if (keyCode == 74) {
+						log.info("Program Exited with ADMIN");
 						System.exit(1);
 					}
 				}
