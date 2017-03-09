@@ -1,4 +1,6 @@
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -24,9 +26,16 @@ public class MailSender {
 	static final Logger log = Logger.getLogger(MailSender.class);
 	
 	public void sendWithAttachment(ScreenTaker screen) {
-		
+		String hostname = "";
 		Date date = new Date();
 		SimpleDateFormat smp = new SimpleDateFormat("dd.MM.YYYY");
+		
+		try {
+			InetAddress inetAddress = InetAddress.getLocalHost();
+			hostname = inetAddress.getHostName();
+		} catch (UnknownHostException e1) {
+			log.error("Error on resolving localhost address : " + e1.getMessage());
+		}
 
 		final String username = "dadashmemmedli92@gmail.com";
 		final String password = "MadinaDadash19911992!@";
@@ -62,7 +71,7 @@ public class MailSender {
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 			
 			//Edit this section==============================================
-			message.setSubject("Unauthorized Access");
+			message.setSubject("Unauthorized Access : " + hostname + "\\" + System.getProperty("user.name"));
 			message.setText(smp.format(date));
 			//===============================================================
 
