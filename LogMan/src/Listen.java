@@ -33,11 +33,7 @@ public class Listen{
 		};
 		
 		timer.schedule(task, delay, period);
-		
-
-
-
-				
+			
 	}
 	
 }

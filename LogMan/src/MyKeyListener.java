@@ -38,7 +38,6 @@ public class MyKeyListener implements NativeKeyListener {
 	
 	@Override
 	public void nativeKeyPressed(NativeKeyEvent arg0) {
-		System.out.println(arg0.getKeyCode());
 				if (arg0.getKeyCode() == NativeKeyEvent.VC_SHIFT_L) {
 					keyCode = arg0.getKeyCode();
 				} else if (arg0.getKeyCode() == NativeKeyEvent.VC_D) {
@@ -55,7 +54,6 @@ public class MyKeyListener implements NativeKeyListener {
 	@Override
 	public void nativeKeyReleased(NativeKeyEvent arg0) {
 		keyCode = 0;
-		System.out.println(keyCode);
 	}
 
 	@Override

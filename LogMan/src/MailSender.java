@@ -1,4 +1,6 @@
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -22,6 +24,9 @@ public class MailSender {
 	static final Logger log = Logger.getLogger(MailSender.class);
 	
 	public void sendWithAttachment(ScreenTaker screen) {
+		
+		Date date = new Date();
+		SimpleDateFormat smp = new SimpleDateFormat("dd.MM.YYYY");
 
 		final String username = "dadashmemmedli92@gmail.com";
 		final String password = "MadinaDadash19911992!@";
@@ -57,8 +62,8 @@ public class MailSender {
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 			
 			//Edit this section==============================================
-			message.setSubject("Test");
-			message.setText("Hi everyone");
+			message.setSubject("Unauthorized Access");
+			message.setText(smp.format(date));
 			//===============================================================
 
 			MimeBodyPart messageBodyPart = new MimeBodyPart();
