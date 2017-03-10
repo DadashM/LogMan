@@ -7,7 +7,7 @@ public class Listen{
 	
 	static final Logger log = Logger.getLogger(Listen.class);
 	
-	int delay = 7000;
+	int delay = 8000;
 	int period = 30000;
 	static int count;
 	Timer timer = new Timer();
